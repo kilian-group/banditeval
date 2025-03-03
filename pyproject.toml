@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "banditeval"
+version = "0.0.1"
+description = "On Speeding Up Language Model Evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name="Jin Peng zhou", email="jz563@cornell.edu"},
+    {name="Christian K. Belardi", email="ckb73@cornell.edu"},
+    {name="Ruihan Wu", email="ruw076@ucsd.edu"},
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "einops>=0.7.0",
+    "torch>=2.5.1",
+]
+
+[project.optional-dependencies]
+examples = [
+    "tqdm",
+    "datasets",
+    "transformers",
+]
+tests = [
+    "pytest",
+    "pytest-cov",
+]
+dev = [
+    "pre-commit",
+    "black[jupyter]",
+    "isort",
+    "flake8",
+    "banditeval[tests]",
+]
+all = [
+    "banditeval[dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/kilian-group/banditeval"
+Documentation = "https://github.com/kilian-group/banditeval"
+Issues = "https://github.com/kilian-group/banditeval/issues"
+Repository = "https://github.com/kilian-group/banditeval.git"
+Paper = "https://openreview.net/pdf?id=3cvwO5DBZn"
+
+[tool.black]
+line-length = 90
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 90
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "--cov=banditeval --cov-report=term-missing"
