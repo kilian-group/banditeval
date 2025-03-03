@@ -29,12 +29,12 @@ def upper_confidence_bound_exploration(
         unobserved_column_indices = (
             observed_matrix[best_method_index].isnan().nonzero().flatten()
         )
+        n_unobserved = unobserved_column_indices.size(0)
+        batch_size = min(batch_size, n_unobserved)
         batch = torch.stack(
             [
                 torch.full((batch_size,), best_method_index),
-                unobserved_column_indices[
-                    torch.randperm(unobserved_column_indices.size(0))[:batch_size]
-                ],
+                unobserved_column_indices[torch.randperm(n_unobserved)[:batch_size]],
             ]
         )
     if return_mus:
@@ -101,6 +101,7 @@ def upper_confidence_bound_exploration_low_rank_factorization(
         best_method_index = torch.argmax(bounds)
         best_method_stds = entry_stds[best_method_index]
         best_method_stds[observed_mask[best_method_index]] = -1
+        batch_size = min(batch_size, torch.sum(~observed_mask[best_method_index]))
         batch = torch.stack(
             [
                 torch.full((batch_size,), best_method_index, device=device),
