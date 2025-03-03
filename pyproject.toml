@@ -44,6 +44,9 @@ all = [
     "banditeval[dev]",
 ]
 
+[tool.setuptools]
+packages = ["banditeval"]
+
 [project.urls]
 Homepage = "https://github.com/kilian-group/banditeval"
 Documentation = "https://github.com/kilian-group/banditeval"
