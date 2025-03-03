@@ -21,11 +21,11 @@ classifiers = [
 dependencies = [
     "einops>=0.7.0",
     "torch>=2.5.1",
+    "tqdm>=4.67.1",
 ]
 
 [project.optional-dependencies]
 examples = [
-    "tqdm",
     "datasets",
     "transformers",
 ]
