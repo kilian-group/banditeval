@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-BanditEval is the official package for _On Speeding Up Language Model Evaluation_.
+BanditEval is the official package for [_On Speeding Up Language Model Evaluation_](https://arxiv.org/abs/2407.06172).
 
 <p align="center">
   <img src="assets/resource_savings.png" alt="BanditEval Performance" width="600"/>
@@ -25,6 +25,9 @@ pip install banditeval[examples]
 # With development tools
 pip install banditeval[dev]
 ```
+
+## Examples
+Please see ``example/sentiment_classification_demo.ipynb`` for a quick demo of BanditEval on evaluating sentiment classification models.
 
 ## Citing Our Work
 
